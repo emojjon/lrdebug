@@ -1,6 +1,3 @@
-import os
-import sys
-
 '''
 This module is intended to help debugging long running processes in python. It
 tries to be as non-intrusive as possible by not introducing anything except its
@@ -39,6 +36,9 @@ own environment). In other words, setting the variables on the commandline or
 exporting them to the environment in some other way turns on these debugging
 modes, but changing them internally in the python code doesn't have any effect.
 '''
+
+import os
+import sys
 
 def print_process_status():
     print(f'Running:\n\t{sys.argv[0]}\n')
