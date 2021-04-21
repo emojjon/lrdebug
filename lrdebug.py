@@ -46,13 +46,17 @@ def print_process_status():
     for i in range(1, len(sys.argv)):
         print(f'\t{i}: "{sys.argv[i]}"')
     print()
-    print(f'Process id of main process is:\n\t{os.getpid()}\n')
-    print('\nTo halt and debug a process (in its own terminal) send signal USR1 (kill -10 pid)\n')
+    pid = os.getpid()
+    print(f'Process id of main process is:\n\t{pid}\n')
+    print(f'\nTo halt and debug a process (in its own terminal) send signal USR1 (kill -10 <pid>, e.g. kill -10 {pid})\n')
 
 
 def usr_debug(sig, frame):
     import pdb
-    print(f'Received signal {sig} ({signal.strsignal(sig)}) in responce to which debug mode will be attempted\n')
+    if sys.version_info.major > 3 or (sys.version_info.major == 3 and sys.version_info.minor > 7):
+        print(f'Received signal {sig} ({signal.strsignal(sig)}) in responce to which debug mode will be attempted\n')
+    else:
+        print('Received a signal in responce to which debug mode will be attempted\n')
     print('Dropping to debugger\n')
     print('User debugger initiated (unset USR_DEBUGGING to disable)\n')
     pdb.Pdb().set_trace(frame)
