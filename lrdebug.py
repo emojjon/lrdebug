@@ -54,9 +54,9 @@ def print_process_status():
 def usr_debug(sig, frame):
     import pdb
     if sys.version_info.major > 3 or (sys.version_info.major == 3 and sys.version_info.minor > 7):
-        print(f'Received signal {sig} ({signal.strsignal(sig)}) in responce to which debug mode will be attempted\n')
+        print(f'\nReceived signal {sig} ({signal.strsignal(sig)}) in response to which debug mode will be attempted\n')
     else:
-        print('Received a signal in responce to which debug mode will be attempted\n')
+        print('\nReceived a signal in response to which debug mode will be attempted\n')
     print('Dropping to debugger\n')
     print('User debugger initiated (unset USR_DEBUGGING to disable)\n')
     pdb.Pdb().set_trace(frame)
@@ -66,7 +66,7 @@ def pm_debug(e):
     import pdb
     import traceback
     traceback.print_tb(e.__traceback__)
-    print(f'Received {type(e).__name__}: {e}\n')
+    print(f'\nReceived {type(e).__name__}: {e}\n')
     print('Dropping to debugger\n')
     print('Postmortem debugger initiated (unset PM_DEBUGGING to disable)\n')
     pdb.post_mortem(e.__traceback__)
