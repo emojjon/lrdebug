@@ -74,7 +74,7 @@ def pm_debug(e):
 
 if 'PM_DEBUGGING' in os.environ and os.environ['PM_DEBUGGING']:
     sys.excepthook = lambda e_type, value, traceback: pm_debug(value)
-                                                                                                                                          1,1           Top
+    
 
 if 'USR_DEBUGGING' in os.environ and os.environ['USR_DEBUGGING']:
     import signal
