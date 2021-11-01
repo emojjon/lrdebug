@@ -48,7 +48,7 @@ def print_process_status():
     print()
     pid = os.getpid()
     print(f'Process id of main process is:\n\t{pid}\n')
-    print(f'\nTo halt and debug a process (in its own terminal) send signal USR1 (kill -10 <pid>, e.g. kill -10 {pid})\n')
+    print(f'\nTo halt and debug a process (in its own terminal) send signal USR1 (kill -{signal.SIGUSR1.value} <pid>, e.g. kill -{signal.SIGUSR1.value} {pid})\n')
 
 
 def usr_debug(sig, frame):
